@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoes Shopping Cart</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+body{
+    background:#f5f5f5;
+}
+header{
+    background:#2874f0;
+    color:white;
+    text-align:center;
+    padding:18px;
+}
+.container{
+    width:85%;
+    margin:30px auto;
+}
+.cart{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding:20px 0;
+}
+.cart-item img{
+    width:150px;
+    height:150px;
+    border-radius:10px;
+}
+.details{
+    flex:1;
+    margin-left:20px;
+}
+.details h2{
+    margin-bottom:10px;
+}
+.price{
+    color:green;
+    font-size:22px;
+    font-weight:bold;
+}
+.quantity input{
+    width:60px;
+    padding:8px;
+    text-align:center;
+}
+.remove{
+    background:red;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.summary{
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+.summary p{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+    font-size:18px;
+}
+.checkout{
+    width:100%;
+    padding:15px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:18px;
+    cursor:pointer;
+}
+.checkout:hover{
+    background:#218838;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>👟 Shoes Shopping Cart</h1>
+</header>
+
+<div class="container">
+
+<div class="cart">
+
+<div class="cart-item">
+
+<img src="c:\Users\umang\OneDrive\문서\GitHub\desktop-tutorial\project\shoes.avif" alt="Sports Shoes">
+
+<div class="details">
+<h2>Nike Sports Shoes</h2>
+<p class="price">₹2,999</p>
+<p>Color : White & Black</p>
+<p>Size : 8</p>
+</div>
+
+<div class="quantity">
+<label>Qty</label><br><br>
+<input type="number" id="qty" value="1" min="1" max="5" onchange="updateCart()">
+</div>
+
+<button class="remove" onclick="removeItem()">Remove</button>
+
+</div>
+
+</div>
+
+<div class="summary">
+
+<h2>Order Summary</h2>
+
+<p>
+<span>Subtotal</span>
+<span id="subtotal">₹2999</span>
+</p>
+
+<p>
+<span>Delivery</span>
+<span>₹100</span>
+</p>
+
+<hr><br>
+
+<p style="font-size:22px;font-weight:bold;">
+<span>Total</span>
+<span id="total">₹3099</span>
+</p>
+
+<button class="checkout" onclick="checkout()">
+Proceed to Checkout
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const price = 2999;
+const delivery = 100;
+
+function updateCart(){
+
+    let qty = parseInt(document.getElementById("qty").value);
+
+    if(qty < 1){
+        qty = 1;
+    }
+
+    if(qty > 5){
+        qty = 5;
+    }
+
+    document.getElementById("qty").value = qty;
+
+    let subtotal = price * qty;
+    let total = subtotal + delivery;
+
+    document.getElementById("subtotal").innerHTML = "₹" + subtotal;
+    document.getElementById("total").innerHTML = "₹" + total;
+}
+
+function removeItem(){
+
+    document.querySelector(".cart").innerHTML =
+    "<h2 style='text-align:center;color:red;'>🛒 Your Cart is Empty</h2>";
+
+    document.querySelector(".summary").style.display = "none";
+}
+
+function checkout(){
+
+    let qty = document.getElementById("qty").value;
+
+    alert(
+        "Order Placed Successfully!\n\n" +
+        "Product : Nike Sports Shoes\n" +
+        "Quantity : " + qty +
+        "\nTotal : " + document.getElementById("total").innerHTML
+    );
+}
+
+</script>
+
+</body>
+</html>

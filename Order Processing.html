@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Processing</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+header{
+    background:#2874f0;
+    color:white;
+    text-align:center;
+    padding:18px;
+}
+
+.container{
+    width:85%;
+    margin:30px auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+    margin-bottom:20px;
+}
+
+h2{
+    color:#2874f0;
+    margin-bottom:15px;
+    border-bottom:2px solid #ddd;
+    padding-bottom:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#2874f0;
+    color:white;
+    padding:12px;
+}
+
+table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+.total{
+    text-align:right;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:15px;
+    color:green;
+}
+
+.status{
+    text-align:center;
+    margin-top:20px;
+}
+
+.status span{
+    display:inline-block;
+    background:#28a745;
+    color:white;
+    padding:12px 25px;
+    border-radius:20px;
+    font-size:18px;
+}
+
+.button{
+    text-align:center;
+    margin-top:25px;
+}
+
+button{
+    background:#ff9800;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    font-size:18px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e68900;
+}
+
+@media(max-width:768px){
+
+.container{
+    width:95%;
+}
+
+table{
+    font-size:14px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>📦 Order Processing</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Customer Details</h2>
+
+<p><strong>Name:</strong> John Smith</p>
+<p><strong>Email:</strong> john@gmail.com</p>
+<p><strong>Phone:</strong> +91 9876543210</p>
+</div>
+
+<div class="card">
+<h2>Shipping Address</h2>
+
+<p>
+221, Green Park Society,<br>
+Ahmedabad,<br>
+Gujarat - 380001
+</p>
+</div>
+
+<div class="card">
+
+<h2>Order Summary</h2>
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+
+<tr>
+<td>Men's Cotton T-Shirt</td>
+<td>2</td>
+<td>₹499</td>
+<td>₹998</td>
+</tr>
+
+<tr>
+<td>Sports Shoes</td>
+<td>1</td>
+<td>₹2,999</td>
+<td>₹2,999</td>
+</tr>
+
+</table>
+
+<p class="total">
+Grand Total : ₹2,997
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Payment Method</h2>
+
+<p>✔ Cash on Delivery (COD)</p>
+
+</div>
+
+<div class="card">
+
+<h2>Order Status</h2>
+
+<div class="status">
+<span>✔ Order Confirmed</span>
+</div>
+
+<div class="button">
+<button>Continue Shopping</button>
+</div>
+
+</div>
+
+</div>
+<script>
+
+// Show order processing automatically
+window.onload = function(){
+
+    let status = document.getElementById("status");
+
+    status.innerHTML = "⏳ Order Processing...";
+    status.style.background = "#ff9800";
+
+    // Change status after 3 seconds
+    setTimeout(function(){
+
+        status.innerHTML = "🚚 Order Shipped";
+        status.style.background = "#2196F3";
+
+    },3000);
+
+    // Change status after 6 seconds
+    setTimeout(function(){
+
+        status.innerHTML = "✅ Order Delivered";
+        status.style.background = "#28a745";
+
+        alert("Your order has been delivered successfully!");
+
+    },6000);
+
+};
+
+// Continue Shopping Button
+function continueShopping(){
+
+    alert("Redirecting to Home Page...");
+
+    // Change home.html to your project's home page
+    window.location.href = "index.html";
+
+}
+
+</script>
+</body>
+</html>
